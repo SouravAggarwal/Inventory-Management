@@ -1,0 +1,94 @@
+<html>
+<head>
+<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
+{% load static %}
+<link rel="stylesheet" href="{% static "css/style.css" %}">
+<link rel="stylesheet" href="{% static "cssbutton/style.css" %}">
+<link rel="stylesheet" href="{% static "cssbutton/reset.css" %}">
+<link rel="stylesheet" href="{% static "cssland/header-second-bar.css" %}">
+<link rel="stylesheet" href="{% static "css/reset.css" %}">
+<link rel="stylesheet" href="{% static "cssland/style.css" %}">
+<link href="{% static "cssland/simple-sidebar.css" %}" rel="stylesheet">
+<script src="{% static "jquery.js.download" %}"></script>
+<script src="{% static "cssbutton/index.js" %}"></script>
+
+<style>
+.fileContainer {
+    overflow: hidden;
+    position: absolute;
+}
+
+.fileContainer {
+    cursor: inherit;
+    display: block;
+    font-size: 20px;
+    filter: alpha(opacity=0);
+    opacity: 1;
+    position: absolute;
+    right:43%}
+body{background-color:#FFFFFF}
+</style>
+</head>
+<body>
+<header class="header-two-bars">
+
+	<div class="header-first-bar">
+
+		<div class="header-limiter">
+
+			<h1><a href="#">Garg<span>Retails</span></a></h1>
+
+			<nav>
+				<a href="/landing">Orders</a>
+				<a href="/stocks">Inventory</a>
+				<a href="/purchase">Purchase</a>
+				<a href="/Reports">Reports</a>
+			<a href="/returns">Returns</a>
+			</nav>
+
+			<a href="/home" class="logout-button">Logout</a>
+		</div>
+
+	</div>
+
+
+</header>
+<h1 style="color:RED">PLEASE UPLOAD THE SAME FILE TO SYNC IN STOCKS</h1>
+<div id="page-content-wrapper">
+            <div class="container-fluid">
+   
+			<form action="" enctype="multipart/form-data"  method="post" align="center">
+			<label class="fileContainer">
+    {{ form}}{{error}}
+				</label>
+				{% csrf_token %}
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+			<input class="btn btn-primary btn-lg " style="background-color:#000000;border-color:black" type="submit" value="Upload">
+			</form>
+			<br>
+			<hr>
+			<br>
+
+
+</div>
+           
+
+
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+
+</script>
+
+</div>
+</body>
+</html>

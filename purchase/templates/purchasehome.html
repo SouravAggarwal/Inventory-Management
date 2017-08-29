@@ -1,0 +1,172 @@
+<html>
+<head>
+<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<title>GargRetails</title>
+{% load static %}
+<link rel="icon" type="image/gif/png" href="{% static "icon.png" %}">
+<link rel="stylesheet" href="{% static "css/style.css" %}">
+<link rel="stylesheet" href="{% static "cssbutton/style.css" %}">
+<link rel="stylesheet" href="{% static "cssbutton/reset.css" %}">
+<link rel="stylesheet" href="{% static "cssland/header-second-bar.css" %}">
+<link rel="stylesheet" href="{% static "css/reset.css" %}">
+<link rel="stylesheet" href="{% static "cssland/style.css" %}">
+<link href="{% static "cssland/simple-sidebar.css" %}" rel="stylesheet">
+<script src="{% static "jquery.js.download" %}"></script>
+<script src="{% static "cssbutton/index.js" %}"></script>
+
+<style>
+.fileContainer {
+    overflow: hidden;
+    position: absolute;
+}
+
+.fileContainer {
+    cursor: inherit;
+    display: block;
+    font-size: 20px;
+    filter: alpha(opacity=0);
+    opacity: 1;
+    position: absolute;
+    right:43%}
+body{background-color:#FFFFFF}
+</style>
+</head>
+<body>
+<header class="header-two-bars">
+
+	<div class="header-first-bar">
+
+		<div class="header-limiter">
+
+			<h1><a href="#">Garg<span>Retails</span></a></h1>
+
+			<nav>
+				<a href="/landing">Orders</a>
+				<a href="/stocks">Inventory</a>
+				<a href="/purchase">Purchase</a>
+				<a href="/Reports">Reports</a>
+				<a href="/returns">Returns</a>
+			</nav>
+
+			<a href="/home" class="logout-button">Logout</a>
+		</div>
+
+	</div>
+
+	<div class="header-second-bar">
+
+		<div class="header-limiter">
+		
+<form method="GET">
+		<input class ="btn btn-primary btn-lg " style="background-color:#000000;border-color:black" type="submit" value="Show Purchase" name="channel">
+		<input class="btn btn-primary btn-lg " style="background-color:#000000;border-color:black" type="submit" value="Create Purchase" name="channel">
+		    </div>
+
+  </div>
+  </div>
+		
+</form>
+
+		</div>
+
+	</div>
+
+</header>
+<body>
+{% if not isShow %}
+<form method="POST">
+{% csrf_token %}
+Purchase ID<input type="text" name="Purchase_ID" value="{{a1}}" required>
+Purchase Date<input type="text" name="Purchase_Date" value="{{a2}}" required>
+Remarks<input type="text" name="Remarks" value="{{a3}}">
+{%if validated%}
+<input type="submit" name="submit" value="submit" >
+{% else %}<input type="submit" name="submit" value="validate" >{% endif %}
+<table>
+<thead>
+<tr>
+<th>
+Item Code
+</th>
+<th>
+Product Name
+</th>
+<th>
+Capacity
+</th>
+<th>
+Base Price
+</th>
+<th>
+Old Quantity
+</th>
+<th>
+Quantity
+</th>
+<th>
+Total Quantity
+</th>
+</tr>
+</thead>
+{% if not response %}
+<tbody>
+{% for i in range %}
+<tr>
+<td>
+<input type="text" name="Item_Code" ></td><td>
+<input type="text" name="Product_Name"  readonly></td><td>
+<input type="number" name="Capacity" readonly></td><td>
+<input type="text" name="Base_Price"  readonly></td><td>
+<input type="number" name="Old_Quantity" readonly></td><td>
+<input type="number" name="Quantity" ></td><td>
+<input type="number" name="Total_Quantity"  readonly></td>
+</tr>
+{% endfor %}
+</tbody>
+{% else %}
+<tbody>
+{% for x,y,z,w,a,b,c in response %}
+<tr>
+<td>
+<input type="text" name="Item_Code" value="{{x}}" readonly></td><td>
+<input type="text" name="Product_Name" value="{{y}}" readonly></td><td>
+<input type="text" name="Capacity" value="{{z}}" readonly></td><td>
+<input type="text" name="Base_Price" value="{{w}}" readonly></td><td>
+<input type="number" name="Old_Quantity" value="{{a}}" readonly></td><td>
+<input type="number" name="Quantity" value="{{b}}" readonly></td><td>
+<input type="number" name="Total_Quantity" value="{{c}}" readonly></td>
+</tr>
+{% endfor %}
+</tbody>
+{% endif %}
+
+</table>
+
+</form>
+{% endif %}
+
+<br><br><br><br><hr>
+<table class="table-fill" align="center">
+<thead>
+<tr>
+{% for i in headers %}
+<th  >{{i}}</th>
+{% endfor %}
+</tr>
+</thead>
+<tbody class="table-hover">
+{% for e in value %}
+<tr>
+{% for i in e %}
+<td >
+{{i}}
+</td>
+{% endfor %}
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</body>
+</html>
